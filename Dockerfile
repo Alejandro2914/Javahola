@@ -1,5 +1,5 @@
 # Use an OpenJDK image to compile the application
-FROM openjdk:17-jdk-alpine AS build
+FROM openjdk:17-slim AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -10,8 +10,8 @@ COPY . /app
 # Compile the Java application
 RUN javac HolaMundo.java
 
-# Use a lightweight Java Runtime Environment (JRE) for the final stage
-FROM openjdk:17-jre-alpine
+# Use a lightweight JRE for the final stage
+FROM openjdk:17-slim
 
 # Set the working directory for the application
 WORKDIR /app
